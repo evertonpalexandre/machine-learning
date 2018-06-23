@@ -1,23 +1,29 @@
-# Machine Learning Engineer Nanodegree
-## Capstone Project
-Joe Udacity  
-December 31st, 2050
+# Engenheiro Machine Learning Nanodegree
+## Projeto Final
+Everton Alexandre
+23 de Junho de 2018
 
-## I. Definition
+## I. Definição
 _(approx. 1-2 pages)_
 
-### Project Overview
-In this section, look to provide a high-level overview of the project in layman’s terms. Questions to ask yourself when writing this section:
-- _Has an overview of the project been provided, such as the problem domain, project origin, and related datasets or input data?_
-- _Has enough background information been given so that an uninformed reader would understand the problem domain and following problem statement?_
+### Visão Geral do Projeto
+O presente artigo descreve o projeto de trabalho final do grupo Nanodegree Engenheiro de Machine Learning. O assunto escolhido para este trabalho está relacionado com a utilização de Machine Learning para a previsão do preço no mercado de ações. Fundos de investimento e bancos tem usado técnicas de aprendizado de máquina de forma a ter um entendimento melhor sobre o comportamento do mercado financeiro. Existem muitas API's que fornecem dados históricos sobre este tema. Além disso, tenho negociado no mercado de ações e mercado futuro há mais de 5 anos, fato que me motivou a escolher este tema para o projeto final sobre Machine Learning.
 
-### Problem Statement
-In this section, you will want to clearly define the problem that you are trying to solve, including the strategy (outline of tasks) you will use to achieve the desired solution. You should also thoroughly discuss what the intended solution will be for this problem. Questions to ask yourself when writing this section:
-- _Is the problem statement clearly defined? Will the reader understand what you are expecting to solve?_
-- _Have you thoroughly discussed how you will attempt to solve the problem?_
-- _Is an anticipated solution clearly defined? Will the reader understand what results you are looking for?_
+O mercado de ações no Brasil movimenta bilhões de reais todos os dias. Milhões de negócios são fechados a cada dia. O nosso objetivo nesse trabalho será prever o comportamento dos preços das ações do mercado financeiro brasileiro. Como dados de entrada serão utilizados os preços de abertura, máxima, mínima, fechamento e volume negociado. Este problema será resolvido através da classe de modelos supervisionados, mais especificamente de regressão. As previsões serão realizadas para o dia seguinte.
 
-### Metrics
+
+### Definição do Problema
+O mercado de ações é algo bem complexo, uma vez que existem diversos fatores que influenciam no preço dos ativos. Por exemplo, a greve de caminhoneiros que ocorreu em maio de 2018 no Brasil contribuiu para que o índice bovespa caísse cerca de 10%. Tais situações são difíceis de prever e estão fora do controle até mesmo de profissionais da área financeira. A previsibilidade tem interessado o setor financeiro e existem vários estudos que buscam criar estratégias vencedoras no mercado de ações.
+
+Tentar prever o mercado de ações é uma perspectiva atraente para os cientistas de dados, motivados não apenas pelo desejo de ganho material, mas pelo desafio. Vemos os altos e baixos diários do mercado e imaginamos que deve haver padrões. Este contexto me motivou a utilizar uma solução de Machine Learning aplicada ao mercado financeiro. Basicamente, realizaremos a previsão do preço de fechamento da ação, ou seja, o fechamento será a variável alvo e o preço de abertura, preço máximo, preço mínimo e volume serão os dados de entrada. Primeiramente iremos obter os dados utilizando a ferramenta Google Finance. Será analisado um horizonte de 11 anos aproximadamente. Após, iremos realizar a manipulação dos dados através da biblioteca Pandas e Numpy. Nesta etapa será realizada a preparação dos dados, identificação dos atributos e variáveis alvo. Após, utilizaremos a bibliteca sklearn.TimeSeriesSplit para separação dos dados em treinamento e teste. Esta biblioteca será usada, pois caso usássemos o crossvalidation tradicional para avaliar o modelo, poderia acabar com uma noção da capacidade preditiva do modelo um pouco alterada (normalmente superestimada) e na hora de usar ele na prática este acabaria não correspondendo às expectativas. Dessa forma, iremos utilizar alguns anos para o treinamento e outro período para teste. Os dados de 2009 até 2015 serão utilizados para treinamento e 2016 até 2018 para testes. Em seguida, será o momento de realizar a escolha do modelo e realizar treinamento e testes. Após escolher o melhor modelo será o momento que realizar os ajustes finos no modelo, configurando e calibrando os parâmetros. Para tanto, utilizaremos GridSearch. Por fim, utilizaremos sklearn.metrics para verificar a pontuação do modelo no treinamento e teste.
+
+### Métricas
+Como estamos tratando de um problema de regressão e não de classificação o modelo não irá acertar a previsão com exatidão. Ou
+seja, provavelmente o número previsto não será o número real. Entretanto, o que se espera desse modelo é que apresente uma taxa de erro baixa. Dessa forma, será utilizado neste trabalho como métrica o "Root Mean Square Error" (RMSE). O RMSE é uma medida utilizada frequentemente para diferenças entre os valores (amostra ou população de valores) previstos por um modelo ou um estimador e os valores observados. A fórmula pode ser representada da seguinte forma:
+
+
+
+O RMSE é sempre um valor não negativo. Um valor igual a 0 (nunca alcançado na prática) indicaria um ajuste perfeito aos dados. Em geral, um valor menor para o RMSE é melhor do que um valor maior.
 In this section, you will need to clearly define the metrics or calculations you will use to measure performance of a model or result in your project. These calculations and metrics should be justified based on the characteristics of the problem and problem domain. Questions to ask yourself when writing this section:
 - _Are the metrics you’ve chosen to measure the performance of your models clearly discussed and defined?_
 - _Have you provided reasonable justification for the metrics chosen based on the problem and solution?_
